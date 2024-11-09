@@ -88,8 +88,8 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-[1024px] mx-auto py-10">
-        <form className="w-[400px] mx-auto" onSubmit={formik.handleSubmit}>
+      <div className="w-full md:w-[1024px] mx-auto p-10 md:py-10">
+        <form className="w-full md:w-[400px] mx-auto" onSubmit={formik.handleSubmit}>
           <h1 className="text-3xl font-bold text-center">Register</h1>
           <div className="mt-5">
             <label

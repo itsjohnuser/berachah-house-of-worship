@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-violet-800 text-white p-4 py-6">
-        <div className="w-full md:w-[1024px] mx-auto">
+        <div className="w-full lg:w-[1024px] mx-auto">
           <nav className="">
             <div className="flex justify-between items-center gap-10 ">
                 <div>
@@ -57,7 +57,7 @@ const Header = () => {
                   </h1>
                 </div>
                 {/* Hamburger Menu */}
-                <div className="md:hidden">
+                <div className="lg:hidden">
                   <button className="text-white" onClick={toggleMenu}>
                     {
                       isMenuOpen ? (
@@ -88,7 +88,7 @@ const Header = () => {
                     }
                   </button>
                 </div>
-                <div className="hidden md:flex flex-start gap-8">
+                <div className="hidden lg:flex flex-start gap-8">
                   <ul className="flex flex-start items-center gap-8">
                     <li className={`hover:border-b-2 hover:border-violet-500 ${currentPath === '/' ? 'border-b-2 border-violet-500' : ''}`}>
                       <Link to="/">Home</Link>
@@ -142,8 +142,8 @@ const Header = () => {
                 {/* Mobile Menu */}
                 {
                   isMenuOpen ? (
-                    <div className="flex-col md:hidden flex gap-8">
-                      <ul className="">
+                    <div className="flex-col lg:hidden flex gap-8">
+                      <ul className="mt-5 lg:mt-0">
                         {/* <li onClick={() => setIsMenuOpen(false)} className="py-2 hover:bg-violet-500 my-1"> */}
                         <li onClick={() => setIsMenuOpen(false)} className={`py-2 hover:bg-violet-500 my-1 ${currentPath === '/' ? 'bg-violet-500' : ''}`}>
                           <Link to="/" className="px-2">Home</Link>
