@@ -15,8 +15,8 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    console.log(isMenuOpen)
   }
-  console.log(isMenuOpen)
 
   // useEffect(() => {
   //   if (user) {
@@ -45,78 +45,137 @@ const Header = () => {
   return (
     <>
       <header className="bg-violet-800 text-white p-4">
-        <div className="w-full md:w-[1024px] flex justify-between items-center mx-auto">
-          <div className="flex justify-between w-full">
-            <h1 className="logo">
-              <Link to="/">Berachah House of Worship - Kota</Link>
-            </h1>
-            {/* Hamburger Menu */}
-          
-            <button className=" md:hidden text-white" onClick={toggleMenu}>
-              <svg
-                fill='none'
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-                className="w-6 h-6"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
-          <nav className="flex justify-between items-center gap-10">
-            <div className="md:flex hidden justify-between items-center gap-10">
-              <ul className="flex flex-start items-center gap-8">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/aboutus">Aboutus</Link>
-                </li>
-                <li>
-                  <Link to="/ministries">Ministries</Link>
-                </li>
-                <li>
-                  <Link to="/branches">Branches</Link>
-                </li>
-                <li>
-                  <Link to="/contactus">Contactus</Link>
-                </li>
-              </ul>
-              <ul className="flex flex-start items-start gap-3">
-                {user ? (
-                  <li>
-                    <button
-                      onClick={handleLogout}
-                      className="bg-red-600 text-white px-5 py-2 rounded-full"
+        <div className="w-full md:w-[1024px] mx-auto">
+          <nav className="">
+            <div className="flex justify-between items-center gap-10 ">
+                <div>
+                  <h1 className="logo">
+                    <Link to="/">Berachah House of Worship - Kota</Link>
+                  </h1>
+                </div>
+                {/* Hamburger Menu */}
+                <div className="md:hidden">
+                  <button className="text-white" onClick={toggleMenu}>
+                    <svg
+                      fill='none'
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                      className="w-6 h-6"
+
                     >
-                      Logout
-                    </button>
-                  </li>
-                ) : (
-                  <>
+                      <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div className="hidden md:flex flex-start gap-8">
+                  <ul className="flex flex-start items-center gap-8">
                     <li>
-                      <Link
-                        to="/login"
-                        className="bg-violet-900 text-white px-5 py-2 rounded-full"
-                      >
-                        Login
-                      </Link>
+                      <Link to="/">Home</Link>
                     </li>
                     <li>
-                      <Link
-                        to="/register"
-                        className="bg-violet-900 text-white px-5 py-2 rounded-full"
-                      >
-                        Register
-                      </Link>
+                      <Link to="/aboutus">Aboutus</Link>
                     </li>
-                  </>
-                )}
-              </ul>
-            </div>
+                    <li>
+                      <Link to="/ministries">Ministries</Link>
+                    </li>
+                    <li>
+                      <Link to="/branches">Branches</Link>
+                    </li>
+                    <li>
+                      <Link to="/contactus">Contactus</Link>
+                    </li>
+                  </ul>
+                  <ul className="flex flex-start items-start gap-3">
+                    {user ? (
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="bg-red-600 text-white px-5 py-2 rounded-full"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    ) : (
+                      <>
+                        <li>
+                          <Link
+                            to="/login"
+                            className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                          >
+                            Login
+                          </Link>
+                        </li>
+                        {/* <li>
+                          <Link
+                            to="/register"
+                            className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                          >
+                            Register
+                          </Link>
+                        </li> */}
+                      </>
+                    )}
+                  </ul>
+                </div>     
+              </div>
+                {/* Mobile Menu */}
+                {
+                  isMenuOpen ? (
+                    <div className="flex-col md:hidden flex gap-8">
+                      <ul className="">
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link to="/aboutus">Aboutus</Link>
+                        </li>
+                        <li>
+                          <Link to="/ministries">Ministries</Link>
+                        </li>
+                        <li>
+                          <Link to="/branches">Branches</Link>
+                        </li>
+                        <li>
+                          <Link to="/contactus">Contactus</Link>
+                        </li>
+                      </ul>
+                      <ul className="flex flex-start items-start gap-3">
+                    {user ? (
+                      <li>
+                        <button
+                          onClick={handleLogout}
+                          className="bg-red-600 text-white px-5 py-2 rounded-full"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    ) : (
+                      <>
+                        <li>
+                          <Link
+                            to="/login"
+                            className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                          >
+                            Login
+                          </Link>
+                        </li>
+                        {/* <li>
+                          <Link
+                            to="/register"
+                            className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                          >
+                            Register
+                          </Link>
+                        </li> */}
+                      </>
+                    )}
+                  </ul>
+                    </div>
+                  ) : null
+                }
           </nav>
         </div>
       </header>
