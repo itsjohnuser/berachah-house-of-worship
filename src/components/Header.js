@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -41,6 +41,9 @@ const Header = () => {
     dispatch(logout()); // Clear user data in Redux store
     navigate("/home"); // Redirect to login page
   };
+
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   return (
     <>
@@ -87,19 +90,19 @@ const Header = () => {
                 </div>
                 <div className="hidden md:flex flex-start gap-8">
                   <ul className="flex flex-start items-center gap-8">
-                    <li>
+                    <li className={`hover:border-b-2 hover:border-violet-500 ${currentPath === '/' ? 'border-b-2 border-violet-500' : ''}`}>
                       <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li className={`hover:border-b-2 hover:border-violet-500 ${currentPath === '/aboutus' ? 'border-b-2 border-violet-500' : ''}`}>
                       <Link to="/aboutus">Aboutus</Link>
                     </li>
-                    <li>
+                    <li className={`hover:border-b-2 hover:border-violet-500 ${currentPath === '/ministries' ? 'border-b-2 border-violet-500' : ''}`}>
                       <Link to="/ministries">Ministries</Link>
                     </li>
-                    <li>
+                    <li className={`hover:border-b-2 hover:border-violet-500 ${currentPath === '/branches' ? 'border-b-2 border-violet-500' : ''}`}>
                       <Link to="/branches">Branches</Link>
                     </li>
-                    <li>
+                    <li className={`hover:border-b-2 hover:border-violet-500 ${currentPath === '/contactus' ? 'border-b-2 border-violet-500' : ''}`}>
                       <Link to="/contactus">Contactus</Link>
                     </li>
                   </ul>
@@ -141,20 +144,21 @@ const Header = () => {
                   isMenuOpen ? (
                     <div className="flex-col md:hidden flex gap-8">
                       <ul className="">
-                        <li onClick={() => setIsMenuOpen(false)}>
-                          <Link to="/">Home</Link>
+                        {/* <li onClick={() => setIsMenuOpen(false)} className="py-2 hover:bg-violet-500 my-1"> */}
+                        <li onClick={() => setIsMenuOpen(false)} className={`py-2 hover:bg-violet-500 my-1 ${currentPath === '/' ? 'bg-violet-500' : ''}`}>
+                          <Link to="/" className="px-2">Home</Link>
                         </li>
-                        <li onClick={() => setIsMenuOpen(false)}>
-                          <Link to="/aboutus">Aboutus</Link>
+                        <li onClick={() => setIsMenuOpen(false)} className={`py-2 hover:bg-violet-500 my-1 ${currentPath === '/aboutus' ? 'bg-violet-500' : ''}`}>
+                          <Link to="/aboutus" className="px-2">Aboutus</Link>
                         </li>
-                        <li onClick={() => setIsMenuOpen(false)}>
-                          <Link to="/ministries">Ministries</Link>
+                        <li onClick={() => setIsMenuOpen(false)} className={`py-2 hover:bg-violet-500 my-1 ${currentPath === '/ministries' ? 'bg-violet-500' : ''}`}>
+                          <Link to="/ministries" className="px-2">Ministries</Link>
                         </li>
-                        <li onClick={() => setIsMenuOpen(false)}>
-                          <Link to="/branches">Branches</Link>
+                        <li onClick={() => setIsMenuOpen(false)} className={`py-2 hover:bg-violet-500 my-1 ${currentPath === '/branches' ? 'bg-violet-500' : ''}`}>
+                          <Link to="/branches" className="px-2">Branches</Link>
                         </li>
-                        <li onClick={() => setIsMenuOpen(false)}>
-                          <Link to="/contactus">Contactus</Link>
+                        <li onClick={() => setIsMenuOpen(false)} className={`py-2 hover:bg-violet-500 my-1 ${currentPath === '/contactus' ? 'bg-violet-500' : ''}`}>
+                          <Link to="/contactus" className="px-2">Contactus</Link>
                         </li>
                       </ul>
                       <ul className="flex flex-start items-start gap-3">
