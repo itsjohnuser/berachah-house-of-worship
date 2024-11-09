@@ -52,19 +52,20 @@ const Register = () => {
       setIsRegistered(true);
 
       // Create user in Firebase Authentication
-      // createUserWithEmailAndPassword(auth, fullname, phoneorEmail, password)
-      //   .then((userCredential) => {
-      //     // Signed up
-      //     const user = userCredential.user;
-      //     // ...
-      //     console.log("created user data from Reg page: ", user);
-      //   })
-      //   .catch((error) => {
-      //     const errorCode = error.code;
-      //     const errorMessage = error.message;
-      //     // ..
-      //     console.log(errorCode, errorMessage);
-      //   });
+      createUserWithEmailAndPassword(auth, phoneorEmail, password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // const user = auth.currentUser;
+          // ...
+          console.log("created user data from Reg page: ", user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          console.log(errorCode, errorMessage);
+        });
 
       // Dispatch user data to Redux store
       dispatch(setUser(values));
