@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
 #root {
   min-height: 100vh;
 }
+.wrapper {
+  min-height: 100vh;
+}
+header {
+  min-height: 50px;
+}
+footer {
+  min-height: 50px;
+}
+main {
+  min-height: calc(100vh - 122px) !important;
+} 

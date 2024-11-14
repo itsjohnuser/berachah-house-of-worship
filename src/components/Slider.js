@@ -38,6 +38,21 @@ const Slider = ({slides}) => {
                 <FaArrowCircleRight />
             </button>
         </div>
+        <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full">
+            {
+                slides.map((s, i) => {
+                    return <div 
+                                onClick={()=>{
+                                    setCurrent(i)
+                                }}
+                                key={"circle" + i} 
+                                className={`rounded-full w-3 h-3 cursor-pointer ${
+                                    i === current ? "bg-white" : "bg-gray-400"
+                                }`}
+                            ></div>
+                })
+            }
+        </div>
     </div>
   )
 

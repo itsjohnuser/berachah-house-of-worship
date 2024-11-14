@@ -65,7 +65,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-full md:w-[1024px] mx-auto p-10 md:py-10">
+      <div className="w-full lg:w-[1024px] mx-auto p-10 md:py-10">
         <form className="w-full md:w-[400px] mx-auto" onSubmit={formik.handleSubmit}>
           <h1 className="text-3xl font-bold text-center">Login</h1>
           <div className="mt-5">
