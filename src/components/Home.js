@@ -1,52 +1,27 @@
 import React from "react";
-import { bannerimg2 } from "../utils/constants";
+import Slider from "./Slider"
 
 const Home = () => {
+    const slidesData = [
+        {
+            name: "Slider1",
+            url : "https://img.freepik.com/free-photo/3d-music-related-scene_23-2151125037.jpg?t=st=1731569536~exp=1731573136~hmac=b3167e8a5e3a45e40a2ec13de78aca6670ab050a2e5c5ba49891522201bc2383&w=2000",
+        },
+        {
+            name: "Slider2",
+            url: "https://img.freepik.com/free-photo/purple-hand-background-showing-invisible-object-gesture_53876-104228.jpg?t=st=1731571928~exp=1731575528~hmac=13bebaef9e29453d9e49b389cb88ed3be23fd3f16518abbba1f1c2d594db007f&w=1480",
+        },
+        {
+            name: "Slider3",
+            url: "https://img.freepik.com/free-vector/realistic-purple-candles-advent-background_23-2149209346.jpg?t=st=1731578062~exp=1731581662~hmac=e2e0a098d669ea953e8456e4033eca9b9aa283288d032c378109586bf89d293b&w=1800",
+        },
+        
+    ]
   return (
     <>
-        <img src={bannerimg2} alt="church" className="w-full" />
-      <div className="d-none">
-        <div className="max-w-2xl m-auto">
-  <div id="default-carousel" className="relative mb-4 mt-4 ml-4" data-carousel="static">
-    {/* <!-- Carousel wrapper --> */}
-    <div className="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-         {/* <!-- Item 1 --> */}
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <span className="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
-            <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." />
-        </div>
-        {/* <!-- Item 2 --> */}
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." />
-        </div>
-        {/* <!-- Item 3 --> */}
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="..." />
-        </div>
-    </div>
-    {/* <!-- Slider indicators --> */}
-    <div className="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" className="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
-            <span className="hidden">Previous</span>
-        </span>
-    </button>
-    <button type="button" className="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
-        <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
-            <span className="hidden">Next</span>
-        </span>
-    </button>
-</div>
-</div>
-      </div>
-      <div className="w-[1024px] mx-auto"></div>
+        {/* <img src={bannerimg2} alt="church" className="w-full" /> */}
+        <Slider slides={slidesData} />
+        <div className="w-[1024px] mx-auto"></div>
     </>
   );
 };
