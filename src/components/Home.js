@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
               <Slider slides={slidesData} />
-        <Slider slides={slidesData} />
+        {/* <Slider slides={slidesData} /> */}
         <div className="w-full lg:w-[1024px] mx-auto">
             <div className="about p-5 md:p-2 md:py-7 lg:p-0 lg:py-7">
                 <h3>Wecome to <span>Berachah House of Worship</span></h3>
