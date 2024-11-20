@@ -112,7 +112,7 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              <div className="absolute top-3 right-3" onClick={() => setShowPassword(!showPassword)}>
+              <div className="absolute top-3 right-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>

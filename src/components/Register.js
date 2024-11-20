@@ -8,12 +8,14 @@ import { setUser } from "../utils/userSlice";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ReactTooltip from 'react-tooltip';
 
 const Register = () => {
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
   const [showPassword, setShowPassword] = useState(false);
+  const [tooltipText, setTooltipText] = useState('');
   const dispatch = useDispatch();
 
   //Setup Yup
@@ -158,8 +160,13 @@ const Register = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              <div className="absolute top-3 right-3" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              <div className="absolute top-3 right-3 cursor-pointer" 
+                onMouseOver={() => setTooltipText(showPassword ? 'Hide' : 'Show')}
+                onMouseOut={() => setTooltipText('')}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash data-tip="Hide" /> : <FaEye data-tip="Show" />}
+                {tooltipText && <div className="tooltip">{tooltipText}</div>}
               </div>
             </div>
             {formik.touched.password && formik.errors.password ? (
