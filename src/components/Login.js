@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 
@@ -13,6 +14,7 @@ const Login = () => {
   //const dispatch = useDispatch();
   const [isLoginSuccess, setIsLoginSuccess] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
   //Accessing the user data from Redux store
@@ -98,9 +100,10 @@ const Login = () => {
             >
               Password
             </label>
-            <div className="mt-1">
+            <div className="mt-1 relative">
               <input
-                type="password"
+                // type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 autoComplete="password"
@@ -109,6 +112,9 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
+              <div className="absolute top-3 right-3" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
             {formik.touched.password && formik.errors.password ? (
               <div className="text-red-500">{formik.errors.password}</div>

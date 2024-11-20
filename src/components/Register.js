@@ -7,11 +7,13 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../utils/userSlice";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   //Setup Yup
@@ -144,9 +146,10 @@ const Register = () => {
             >
               Password
             </label>
-            <div className="mt-1">
+            <div className="mt-1 relative">
               <input
-                type="password"
+                // type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 autoComplete="password"
@@ -155,6 +158,9 @@ const Register = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
+              <div className="absolute top-3 right-3" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
             {formik.touched.password && formik.errors.password ? (
               <div className="text-red-500">{formik.errors.password}</div>
