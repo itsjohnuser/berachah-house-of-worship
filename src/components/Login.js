@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 // import { useDispatch } from "react-redux";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 import { useSelector } from "react-redux";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -47,21 +49,33 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
+      console.log("Registered User Data from Registration Page is: ", values);
+      const { phoneorEmail, password } = values;
+      // Simulate successful login
+      
       // Check if the entered data matches the registered user
-      if (
-        registeredUser &&
-        registeredUser.phoneorEmail === values.phoneorEmail &&
-        registeredUser.password === values.password
-      ) {
+      
         // Login success, navigate to dashboard
         setIsLoginSuccess(true);
+
+        //Check user in Firebase Authentication
+        signInWithEmailAndPassword(auth, phoneorEmail, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          // ...
+          console.log("login user data from Login page: ", user);
+
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+
+        });
         setTimeout(() => {
           navigate("/dashboard");
         }, 3000);
-      } else {
-        // Show error if the credentials don't match
-        setError("Invalid login credentials or user not registered.");
-      }
     },
   });
 
