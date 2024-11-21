@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../utils/userSlice";
@@ -172,9 +172,12 @@ const Header = () => {
                             <li>
                               <button
                                 onClick={handleLogout}
-                                className="bg-red-600 text-white px-5 py-2 rounded-full"
+                                className="bg-red-600 text-white px-5 py-2 rounded-full cursor-pointer"
                               >
-                                Logout
+                                <span className="flex gap-2 items-center">
+                                  <MdLogout />
+                                  Logout
+                                </span>
                               </button>
                             </li>
                           ) : (

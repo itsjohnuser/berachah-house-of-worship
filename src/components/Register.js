@@ -8,7 +8,7 @@ import { setUser } from "../utils/userSlice";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import ReactTooltip from 'react-tooltip';
+// import ReactTooltip from 'react-tooltip';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const Register = () => {
     validationSchema: registerSchema,
     onSubmit: (values, { resetForm }) => {
       console.log("Registered User Data from Registration Page is: ", values);
-      const { fullname, phoneorEmail, password } = values;
+      const { phoneorEmail, password } = values;
       // Simulate successful registration
       setIsRegistered(true);
 

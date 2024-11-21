@@ -19,7 +19,7 @@ const Home = () => {
         
     ]
 
-    const imageUrls = slidesData.map((slide, index) => slide.url); 
+    //const imageUrls = slidesData.map((slide, index) => slide.url); 
 
   return (
     <>
