@@ -3,22 +3,24 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useSelector } from "react-redux";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { setUser } from "../utils/userSlice";
+
 
 
 
 const Login = () => {
   const navigate = useNavigate();
-  //const dispatch = useDispatch();
   const [isLoginSuccess, setIsLoginSuccess] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-
+  const dispatch = useDispatch();
+  
   //Accessing the user data from Redux store
   const registeredUser = useSelector((state) => state.user.user);
 
@@ -48,13 +50,17 @@ const Login = () => {
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       console.log("Registered User Data from Registration Page is: ", values);
       const { phoneorEmail, password } = values;
       // Simulate successful login
       
       // Check if the entered data matches the registered user
-      
+      // if (
+      //   registeredUser &&
+      //   registeredUser.phoneorEmail === values.phoneorEmail &&
+      //   registeredUser.password === values.password
+      // ) {
         // Login success, navigate to dashboard
         setIsLoginSuccess(true);
 
@@ -73,9 +79,15 @@ const Login = () => {
           console.log(errorCode, errorMessage);
 
         });
+        // Dispatch user data to Redux store
+        dispatch(setUser(values));
         setTimeout(() => {
           navigate("/dashboard");
         }, 3000);
+      // } else {
+      //   // Show error if the credentials don't match
+      //   setError("Invalid login credentials or user not registered.");
+      // }
     },
   });
 
