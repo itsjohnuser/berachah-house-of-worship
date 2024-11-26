@@ -4,7 +4,12 @@ import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 
 const Slider = ({slides}) => {
 
-    const [current, setCurrent] = useState(0);
+    console.log("Slides Length is:", slides.length)
+
+    const [current, setCurrent] = useState(0);  
+
+    console.log("Slide Current Value is:", current)
+
 
     const previousSlide = () => {
         if(current === 0) setCurrent(slides.length - 1)
@@ -17,7 +22,7 @@ const Slider = ({slides}) => {
     }
 
   return (
-    <div className='overflow-hidden relative'>
+    <div className='overflow-hidden relative md:h-[600px]'>
         <div 
             className='flex transition ease-out duration-40'
             style={{
@@ -26,7 +31,8 @@ const Slider = ({slides}) => {
         >
             {
                 slides.map((slide) => {
-                    return <img src={slide.url} key={slide.name} alt={slide.name} className='w-screen' />
+                    // return <img src={slide.url} key={slide.name} alt={slide.name} className='w-screen' />
+                    return <img src={slide.url} key={slide.name} alt={slide.name} className='w-screen object-cover' />
                 })
             }
         </div>

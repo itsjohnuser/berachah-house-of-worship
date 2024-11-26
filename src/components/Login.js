@@ -22,7 +22,7 @@ const Login = () => {
   const dispatch = useDispatch();
   
   //Accessing the user data from Redux store
-  const registeredUser = useSelector((state) => state.user.user);
+  //const registeredUser = useSelector((state) => state.user.user);
 
   //Setup Yup for form validation
   const loginSchema = Yup.object().shape({
