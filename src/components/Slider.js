@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 
 
 const Slider = ({slides}) => {
 
-    const [current, setCurrent] = useState(0);
+    console.log("Slides Length is:", slides.length)
+
+    const [current, setCurrent] = useState(0);  
+
+    console.log("Slide Current Value is:", current)
+
 
     const previousSlide = () => {
         if(current === 0) setCurrent(slides.length - 1)
@@ -14,19 +19,30 @@ const Slider = ({slides}) => {
     const nextSlide = () => {
         if(current === slides.length - 1) setCurrent(0)
         else setCurrent(current + 1);
+        //setCurrent((current + 1) % slides.length);
     }
 
+    useEffect(()=>{
+        const timer = setTimeout(()=> {
+            nextSlide()
+        }, 5000)   
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [current])
+
   return (
-    <div className='overflow-hidden relative'>
+    <div className='overflow-hidden relative w-screen md:h-[650px] aspect-ratio-square'>
         <div 
-            className='flex transition ease-out duration-40'
+            className='flex transition ease-out duration-40 w-screen'
             style={{
                 transform: `translateX(-${current * 100}%)`,
             }}
         >
             {
-                slides.map((slide) => {
-                    return <img src={slide.url} key={slide.name} alt={slide.name} className='w-screen' />
+                slides.map((slide, i) => {
+                    // return <img src={slide.url} key={slide.name} alt={slide.name} className='w-screen' />
+                    return <img src={slide.url} key={slide.name} alt={slide.name} className='object-cover'  />
                 })
             }
         </div>
